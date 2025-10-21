@@ -54,8 +54,9 @@ def test4():
     """4번 실습문제 풀이"""
     num = float(input("실수 입력:"))
     print
-    print('True' if (int(num)%2 == 0 and round(num) == int(num)+1) 
-          or (int(num)%2 ==1 and round(num) > int(num))  else 'False')
+    # print('True' if (int(num)%2 == 0 and round(num) == int(num)+1) 
+    #       or (int(num)%2 ==1 and round(num) > int(num))  else 'False')
+    print('True' if round(num) > 0 else 'False')
     
 #test4()  #  <===
 
@@ -72,37 +73,51 @@ def test5():
 
 
 
-def test3():
-    """3번 실습문제 풀이"""
+def test6():
+    """6번 실습문제 풀이"""
+    a = float(input("a 입력: "))
+    b = float(input("b 입력: "))
+    print("True" if a > b or round(a) > math.trunc(b) else "False")
+#test6()
+
+
+
+def test7():
+    """7번 실습문제 풀이"""
+    x = float(input("실수 x 입력:"))
+    print("True" if math.ceil(x)%2 == 0 and round(x) < 10 else "False")
     
-test3()
+#test7()
 
 
 
-def test3():
-    """3번 실습문제 풀이"""
+def test8():
+    """8번 실습문제 풀이"""
+    x = float(input("실수 x 입력: "))
+    a = math.trunc(x)
+    b = round(x)
+    c = math.ceil(x)
+    print( c if c > b and c > a else (b if b > a else a ))
     
-test3()
+# test8()
 
 
 
-def test3():
-    """3번 실습문제 풀이"""
+def test9():
+    """9번 실습문제 풀이"""
+    x = float(input("실수입력 :"))
+    print( "조건만족" if round(x)%5 == 0 or math.ceil(x)%2==0 else "조건 불만족" )
     
-test3()
+#test9()
 
 
 
-def test3():
-    """3번 실습문제 풀이"""
-    
-test3()
-
-
-
-def test3():
-    """3번 실습문제 풀이"""
-    
-test3()
+def test10():
+    """10번 실습문제 풀이"""
+    a = float(input("a 입력: "))
+    b = float(input("b 입력: "))
+    print( "True" if round(a) <= round(b) 
+          and math.ceil(a) > math.trunc(b) else "False")
+test10()
 
 
