@@ -1,0 +1,11 @@
+{
+    "python-envs.defaultEnvManager": "ms-python.python:conda",
+    "python-envs.pythonProjects": [],
+    //"python.pythonPath": "C:\\Users\\TJ\\anaconda3\\python.exe"
+    "python.pythonPath": "C:\\Users\\TJ\\anaconda3\\envs\\pystudy_env\\python.exe",
+    //"python.defaultInterpreterPath": "C:\\Users\\yourname\\miniconda3\\envs\\pystudy_env\\python.exe"
+    "python.defaultInterpreterPath": "C:\\Users\\TJ\\anaconda3\\envs\\pystudy_env\\python.exe",
+    "python-envs.defaultPackageManager": "ms-python.python:conda"
+
+}
+
