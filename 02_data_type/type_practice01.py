@@ -55,8 +55,8 @@ def test4():
     num = float(input("실수 입력:"))
     print
     # print('True' if (int(num)%2 == 0 and round(num) == int(num)+1) 
-    #       or (int(num)%2 ==1 and round(num) > int(num))  else 'False')
-    print('True' if round(num) > 0 else 'False')
+    #       or (int(num)%2 ==1 and round(num) > int(num))  else 'False') # 모든 실수에 대해?
+    print('True' if round(num) > 0 else 'False') # 0 ~ 1 사이 실수에 대해 
     
 #test4()  #  <===
 
