@@ -1,5 +1,5 @@
 # match case
-# - 값으로써 분기처라하는 제어문 (Java의 swtich case와 동일)
+# - 값으로써 분기처라하는 제어문 (Java의 switch case와 동일)
 # - 3.10(2020년) 지원 ( ==> python version 호환성 생각해야 한다.)
 # - break없다, 그래도 무조건 하나만 수행
 
@@ -58,7 +58,7 @@ def test2(op, x, y):
 # test2("#", 10, 3) # # ValueError: 10-3 = 7 연산자가 부적절합니다.
     
 def test3():
-    """if/ elif/ else 대체하는 match..case(docsting)"""
+    """if/ elif/ else 대체하는 match..case(docstring)"""
     num = int(input("정수 입력 :"))
     match num:
         case num if num > 0 :
