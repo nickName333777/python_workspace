@@ -1,0 +1,205 @@
+[ 2025/10/15 ]
+ ERD: 설계도
+ 스키마:스키마: 설계도를 보고 실제 DB에 반영한 상태
+ 이다음에 객체 설계
+
+ RDBMS에서는 상속의 개념이 없어서 상속구조를 3가지 전략으로 설계
+ 3. 구체클래스 전략: 부모없으므로 상속없이, 각 자식이 공통된기능을 자기 자신들에 안에 중복되지만 각자 구현.
+
+ 객체지향의 관계: class.getMember()
+ DB: 참조키(외래키) MEMBER_NO
+ ---
+ JPA ~ interface (규칙/명령) ~ List와 유사한 개념 (API=규칙)
+ Hibernate ~ JPA 구현 클래스 (실행자) ~ ArrayList와 유사한 개념 (라이브러리)
+ ---
+ api(규칙)  
+ 라이브러리(api)규칙들을 실제로 구현해둔 코드 묶음(주도권은 개발자가)
+ 프레임워크(주도권은 프레임워크가-> 의존성주임, DI)
+ 
+ ------------ JPA
+ RDBMS : 디스크기반
+ H2 데이터베이스: 인메모리 (또는 파일기반)
+ --------------
+ H2-database Setup관련
+application.properties -> application.yml로 이름바꾸고, 노션에서 .yml설정 파일 내용 복사해 넣는다.
+ jpa초기세팅(멤버).zip압축풀고, /src/main/java/com.jr.jpa안에 압축푼 파일들 넣는다
+ 
+############ Windows에서
+ jdbc:h2:file:C:\workspace\6_SpringBoot\jpaProject\tdb # 화일로 (단일 접속)
+ jdbc:h2:file:C:/workspace/6_SpringBoot/jpaProject/tdb
+ jdbc:h2:tcp://localhost/C:/workspace/6_SpringBoot/jpaProject/tdb # TCP로(동시접속)
+##############
+http://192.168.0.98:8082/login.do?jsessionid=d7da590a65e4064b6bd46166e7aa9f80 : H2 콘솔 주소
+
+
+
+#############
+ 
+ /media/yypark/data_z7f/dir_KDT_TJ903/workspace/6_SpringBoot/jpaProject/
+ 
+ /home/yypark/test.mv.db
+ 
+       url: jdbc:h2:tcp://localhost/경로/DB파일명
+      url: jdbc:h2:tcp://localhost/home/yypark/test.mv.db
+      
+      
+./h2.sh -tcp
+jdbc:h2:tcp://localhost/~/test
+
+ jpa초기세팅(멤버).zip압축풀고, /src/main/java/com.jr.jpa안에 압축푼 파일들 넣는다
+ 
+ JDBC URL: jdbc:h2:/media/yypark/data_z7f/dir_KDT_TJ903/workspace/6_SpringBoot/jpaProject/tdb
+ 
+ jdbc:h2:tcp://localhost/C:/workspace/6_SpringBoot/jpaProject/tdb
+ jdbc:h2:tcp://localhost/media/yypark/data_z7f/dir_KDT_TJ903/workspace/6_SpringBoot/jpaProject/tdb
+  
+ /media/yypark/data_z7f/dir_KDT_TJ903/workspace/6_SpringBoot/jpaProject/src/main/java/com/jr/jpa/tdb/  => tdb 폴더안에 db이름? => Wrong...
+ /media/yypark/data_z7f/dir_KDT_TJ903/workspace/6_SpringBoot/jpaProject/src/main/java/com/jr/jpa/tdb   => jpa 폴더안에 tdb.mv.db 생성 
+  /media/yypark/data_z7f/dir_KDT_TJ903/workspace/6_SpringBoot/jpaProject/src/main/java/com/jr/jpa/tdb  => 이걸로 생성했다? 생성않됨
+  
+  ################################################
+  [ test H2.database ]
+  jdbc:h2:~/test  <=== 이거가 자동생성된거... 그냥 이거써. (application.yml의 url도 이거?)
+  
+  [ H2 console 실행가능한 폴더]
+  /media/yypark/data_z7f/dir_KDT/tools_linux/6_SpringBoot/h2-2025-09-22/h2/bin/
+  여기서 
+  $ java -jar h2*.jar
+  	==> http://127.0.1.1:8082/login.jsp?jsessionid=  주소로 H2 console을 연다.
+  ###############################################
+  
+< H2 Console을 이용한 test DB 생성 >
+H2 콘솔 화면에서 다음 절차를 따른다:
+
+JDBC URL 입력란에 다음을 입력한다:
+
+text
+jdbc:h2:~/test
+(~/test.mv.db 파일 형태로 홈 디렉토리에 DB가 생성됨)
+
+사용자 이름(User Name)은 기본값 sa, 비밀번호(Password)는 비워둔다.
+
+연결(Connect) 버튼을 클릭한다.
+데이터베이스가 존재하지 않으면 Database not found 메시지와 함께 새 데이터베이스 파일을 자동 생성한다.
+
+연결 후 SQL 콘솔에서 초기 테이블을 생성하거나 테스트 데이터를 삽입할 수 있다. 예:
+
+sql
+CREATE TABLE users(id INT PRIMARY KEY, name VARCHAR(100));
+INSERT INTO users VALUES(1, 'Alice');
+SELECT * FROM users;
+      
+<서버 모드로 실행 (선택 사항)?
+다른 애플리케이션(JPA 등)에서 접근하려면 Server 모드를 사용한다:
+서버 모드 실행:
+bash
+./h2.sh -tcp
+콘솔에서 JDBC URL을 다음 형태로 설정:
+
+jdbc:h2:tcp://localhost/~/test
+동일하게 sa 사용자로 로그인 후 사용할 수 있다.
+
+      
+ -------------
+ - 도메인(domain) : 프로그램이 다루는 주제나 업무 영역
+ ex) 온라인 쇼핑몰 , 회원, 주문, 상품 -->  각각 클래스 필요
+ 
+ - 객체(Object) : 독립적으로 각각 구분해서 인식할 수 있는 모든 것
+ 
+ - 모델링(Modeling) : 현실 세계의 개념이나 구조를 이해하기 쉬운 형태로 표현(모델로 만드는 것, or Code로 표현) 하는 것
+ (예시:ERD, 데이터 모델링을 시각적으로 표현한 것)
+ - 도메인 객체 : 프로그램이 다루는 주제나 업무 영역(도메인)을 프로그램 안에서 독립적으로 각각 구분해서 인식할 수 있는 모든 것(객체)로 표현(모델링)한 것
+ 
+ 
+ ---
+ int -> 0 (0을 주면 값을 업데이트 하지말라는 말인데, 업데이트 할수도 있다. 그런데 객체로 null주면 값을 업데이트하지말라는게 명확하다. 따라서 int가 아니라 객체를 쓰는 것이 업데이트 여부판단에 유리하다) 
+ 객체 -> null
+ 
+
+###########################
+영속성 관리 : JPA가 엔티티 객체를 메모리에 보관하면서 상태 변화를 추적하고, 적절한 시점에 DB와 동기화
+영속성 컨텍스트: 엔티티를 임시 보관하고 상태 관리하는 1차 캐시공간
+엔티티 매니저: 
+
+서비스임플에서 toEntity -> 레퍼지토리임플 persist로 영속상태로 
+-> 1차 캐쉬 -> JPA가 추적 시작 -> 쓰기지연 저장장소에 보관하다가 한번에 DB에 저장
+
+##########################
+주소 + 데이터 ==> 포스트맨 (API테스팅하는애)
+
+< work-flow >
+boot에서 Entity작업 --> Postman에서 API 테스트 --> H2-console에서 확인
+
+######
+spring security turn-off는 main app에서 어노테이션에 옵션추가
+
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
+public class JpaProjectApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(JpaProjectApplication.class, args);
+	}
+
+}
+
+
+####################### [2025/10/21]
+Controller -> 
+
+1차 캐시: MEMBER (member1@naver.com)
+
+            MEMBER(member2@gmail.com ) ==>  dirty 감지, ==> update한다.
+
+
+
+====== 파이썬
+
+Python Microsoft
+
+Jupyter Microsoft
+
+Python Indent Kevin Rose
+
+autoDocstring - Python Docstring Generator Nils Werner
+
+
+[ conda cmds ]
+conda env list
+conda config --show channels
+
+conda config --add channels conda-forge && conda config --set channel_priority strict
+
+conda create -n pystudy_env python=3.13
+
+conda env list # 설치환경 pystudy_env   확인
+conda activate pystudy_env
+
+# python interpreter 위치 확인
+$ where python   # Windows
+$ which python   # macOS/Linux
+C:\Users\TJ\anaconda3\envs\pystudy_env\python.exe
+C:\Users\TJ\AppData\Local\Microsoft\WindowsApps\python.exe
+
+###############################
+(base) C:\Users\TJ>conda activate pystudy_env
+(pystudy_env) C:\Users\TJ>python --version
+Python 3.13.9
+
+(pystudy_env) C:\Users\TJ>where python
+C:\Users\TJ\anaconda3\envs\pystudy_env\python.exe
+C:\Users\TJ\AppData\Local\Microsoft\WindowsApps\python.exe
+
+(pystudy_env) C:\Users\TJ>conda deactivate
+
+(base) C:\Users\TJ>python --version
+Python 3.13.5
+
+(base) C:\Users\TJ>where python
+C:\Users\TJ\anaconda3\python.exe
+C:\Users\TJ\AppData\Local\Microsoft\WindowsApps\python.exe
+
+
+
+
+####################### [2025/10/27]
+oop...
