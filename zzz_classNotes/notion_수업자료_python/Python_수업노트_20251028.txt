@@ -1,0 +1,82 @@
+
+
+####################### [2025/10/21]
+Controller -> 
+
+1차 캐시: MEMBER (member1@naver.com)
+
+            MEMBER(member2@gmail.com ) ==>  dirty 감지, ==> update한다.
+
+
+
+====== 파이썬
+
+Python Microsoft
+
+Jupyter Microsoft
+
+Python Indent Kevin Rose
+
+autoDocstring - Python Docstring Generator Nils Werner
+
+
+[ conda cmds ]
+conda env list
+conda config --show channels
+
+conda config --add channels conda-forge && conda config --set channel_priority strict
+
+conda create -n pystudy_env python=3.13
+
+conda env list # 설치환경 pystudy_env   확인
+conda activate pystudy_env
+
+# python interpreter 위치 확인
+$ where python   # Windows
+$ which python   # macOS/Linux
+C:\Users\TJ\anaconda3\envs\pystudy_env\python.exe
+C:\Users\TJ\AppData\Local\Microsoft\WindowsApps\python.exe
+
+###############################
+(base) C:\Users\TJ>conda activate pystudy_env
+(pystudy_env) C:\Users\TJ>python --version
+Python 3.13.9
+
+(pystudy_env) C:\Users\TJ>where python
+C:\Users\TJ\anaconda3\envs\pystudy_env\python.exe
+C:\Users\TJ\AppData\Local\Microsoft\WindowsApps\python.exe
+
+(pystudy_env) C:\Users\TJ>conda deactivate
+
+(base) C:\Users\TJ>python --version
+Python 3.13.5
+
+(base) C:\Users\TJ>where python
+C:\Users\TJ\anaconda3\python.exe
+C:\Users\TJ\AppData\Local\Microsoft\WindowsApps\python.exe
+
+
+
+
+####################### [2025/10/27]
+oop...
+- 객체지향 프로그래밍
+- Encapsulation
+- Car example
+- Inheritance: Person, Employee, Dev
+
+
+####################### [2025/10/28]
+- Inheritance: 다중상속 [ class A, class B, class C(A, B); C.mro ] 
+- Polymorphism: 
+	1) abstract class(abc.ABC, @abstractmethod)
+	2) oop에서 is a 관계: 상속, has a 관계: 포함
+	
+- Enum: data_type에서 skip했던 부분 학습(상속과의 연관성때문)
+
+- oop practice2: 헬스장 회원 출입관리 시스템 
+	
+- Data Structure: 
+	1) Stack by List
+	2) Queue by collections.deque
+
