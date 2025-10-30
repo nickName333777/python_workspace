@@ -1,0 +1,191 @@
+
+
+####################### [2025/10/21]
+Controller -> 
+
+1차 캐시: MEMBER (member1@naver.com)
+
+            MEMBER(member2@gmail.com ) ==>  dirty 감지, ==> update한다.
+
+
+
+====== 파이썬
+
+Python Microsoft
+
+Jupyter Microsoft
+
+Python Indent Kevin Rose
+
+autoDocstring - Python Docstring Generator Nils Werner
+
+
+[ conda cmds ]
+conda env list
+conda config --show channels
+
+conda config --add channels conda-forge && conda config --set channel_priority strict
+
+conda create -n pystudy_env python=3.13
+
+conda env list # 설치환경 pystudy_env   확인
+conda activate pystudy_env
+
+# python interpreter 위치 확인
+$ where python   # Windows
+$ which python   # macOS/Linux
+C:\Users\TJ\anaconda3\envs\pystudy_env\python.exe
+C:\Users\TJ\AppData\Local\Microsoft\WindowsApps\python.exe
+
+###############################
+(base) C:\Users\TJ>conda activate pystudy_env
+(pystudy_env) C:\Users\TJ>python --version
+Python 3.13.9
+
+(pystudy_env) C:\Users\TJ>where python
+C:\Users\TJ\anaconda3\envs\pystudy_env\python.exe
+C:\Users\TJ\AppData\Local\Microsoft\WindowsApps\python.exe
+
+(pystudy_env) C:\Users\TJ>conda deactivate
+
+(base) C:\Users\TJ>python --version
+Python 3.13.5
+
+(base) C:\Users\TJ>where python
+C:\Users\TJ\anaconda3\python.exe
+C:\Users\TJ\AppData\Local\Microsoft\WindowsApps\python.exe
+
+
+
+
+####################### [2025/10/27]
+oop...
+- 객체지향 프로그래밍
+- Encapsulation
+- Car example
+- Inheritance: Person, Employee, Dev
+
+
+####################### [2025/10/28]
+- Inheritance: Dev -> improved a bit
+- Inheritance: 다중상속 [ class A, class B, class C(A, B); C.mro ] 
+- Polymorphism: 
+	1) abstract class(abc.ABC, @abstractmethod)
+	2) oop에서 is a 관계: 상속, has a 관계: 포함
+	
+- Enum: data_type에서 skip했던 부분 학습(상속과의 연관성때문)
+
+- oop practice2: 헬스장 회원 출입관리 시스템 
+	
+- Data Structure: 
+	1) Stack by List
+	2) Queue by collections.deque
+	3) SinglyLinkedList
+
+####################### [2025/10/29]
+- Data Structure: 
+	3) SinglyLinkedList, continued
+	4) binary search tree(BST)
+	5) radix_sort
+	
+- module
+	1) scope
+	2) module
+	3) namespace
+	
+- io
+	1) os 모듈: os.getcwd(), os.listdir(), os.path.isfile(), os.path.isdir(), os.path.join(), os.environ, os.system(cmd), ....
+	2) io: 
+		open()
+		with open()
+		- 파일('w','r','a'모드), 
+		- 이미지('wb', 'rb'모드), 
+		- csv 모듈사용한 csv-dict변환 
+			dict -> csv Write: by csv.DictWriter(f, option)); 
+			csv -> dict Read: by csv.DictReader(f)
+		
+- exception: 
+	try:
+		
+	except:
+	
+	
+
+
+
+####################### [2025/10/30]
+# 아는 만큼 보이는 시리즈:  "IT 지식", frontend, backend, AI
+# 면접을 위한 cs 전공 지식 노트
+
+- exception, continued:
+	a. 사용자 정의 exception -> class UserRaiseException(Exception): pass
+	b. practice: 일기장 앱
+	
+	
+- streamlit: https://streamlit.io/ # python 개발 프로토타입 작성에 효율적
+
+	[ streamlit 설치 ]
+	$ conda cli ==> 위한 Windows 시스템환경변수 추가(JDK때와 같음)=> TJ(사용자이름)에 대한 사용자 변수(U)에서
+	C:\Users\TJ\anaconda3
+	C:\Users\TJ\anaconda3\Scripts
+	C:\Users\TJ\anaconda3\Library\bin
+
+	$ conda env list
+	# conda environments:
+	#
+	base                   C:\Users\TJ\anaconda3
+	pystudy_env            C:\Users\TJ\anaconda3\envs\pystudy_env
+	pystudy_env            c:\Users\TJ\anaconda3\envs\pystudy_env
+
+	$ conda activate pystudy_env
+	(pystudy_env) C:\Users\TJ>
+
+	$ conda install streamlit
+	
+	
+	(pystudy_env) C:\workspace\7_Python\11_streamlit>streamlit run 01_text.py
+	 ==> email은 입력않고 엔터, 방화벽은 허용 ==>  브라우저에 http://localhost:8501/ 주소에 Streamlit 페이지 뜬다 ==> 웹서버 역할한다... 끄지말고, 01_text.py에 streamlit 명령어 작성하고 페이지 refresh로 확인해라
+	 
+	# 실행 시키기(예시):
+	#   02_data.py 안에서 streamlit임포트해주고: import streamlit as st
+	#  (pystudy_env) C:\workspace\7_Python\11_streamlit>streamlit run 02_data.py 
+	# (해당 파일 경로에서 실행해야함)
+	# 종료는 streamlit run 파일명.py실행시킨 터미널에서 ctrl + C
+	
+	a. text
+	b. data
+	c. input_widget
+	d. media (image 출력: 서버이미지, 웹이미지)
+	e. streamlit 서버의 session_state에 변수값 지정하여, session에 기억된 변수값 업데이트
+	
+	
+- 웹크롤링
+	a. Naver API
+	 - API 소개: https://developers.naver.com/products/intro/plan/plan.md
+	 - API 등록: https://developers.naver.com/apps/#/wizard/register
+	 - API 개발가이드: https://developers.naver.com/docs/common/openapiguide/
+	 - API 검색: https://developers.naver.com/docs/serviceapi/search/search.md
+	 - API 검색 - 블로그: https://developers.naver.com/docs/serviceapi/search/blog/blog.md#%EB%B8%94%EB%A1%9C%EA%B7%B8
+	 - API 검색 - 뉴스: https://developers.naver.com/docs/serviceapi/search/news/news.md#%EB%89%B4%EC%8A%A4
+	 - API 검색 - 책: https://developers.naver.com/docs/serviceapi/search/book/book.md
+	 - API 등록 정보: 
+			 애플리케이션 정보
+			Client ID: GYWYBSNbG_aKYLQrlmY5
+			Client Secret: _KuV81kaw3
+			API 호출 안내: 지도 API 인증실패나 네이버 로그인 이용 제한이 걸렸다면 [API 설정] 탭에서 URL 관련 설정을 수정하시면 정상 이용 가능합니다 !!!
+			비로그인 오픈 API 당일 사용량API호출량/일일허용량: 0/25000
+			
+	 - 네이버: https://www.naver.com/robots.txt (루트빼고는 다 된다)
+		User-agent: *
+		Disallow: /
+		Allow : /$
+		Allow : /.well-known/privacy-sandbox-attestations.json
+			
+	 - 인스타그램: https://www.instagram.com/robots.txt		(크롤링되는게 별로 없다)
+	 
+- C-> S가 html다 만들어서 html 돌려줌: Server Side Rendering(SSR) : 서버에서 html완성하여 응답 -> 정적 -> beautful soup으로 정적 web scraping
+- C-> S는 만들어진 script만 돌려줌 -> C가 JS로 동적으로 html완성하여 만듬:  Client Side Rendering -> 동적  -> selenium으로 동적 web scraping
+
+
+- (pystudy_env) C:\workspace\8_WebCrawling>pip install oracledb # ==> oracle DB를 쓸수 있다. (sqldeveloper사용)
+- "jr2_사용자_py_openAPI.sql" 로 jr2사용자 계정만들고, 또 BOOK table만들어서 Naver book 검색(=소나기) 86건 DB에 insert해준다.
