@@ -83,7 +83,7 @@ class DiaryUser:
     def sel_diary(self, timestamp: str):
         return [ diary for diary in self.__diaries if diary.__diary_time == timestamp ] # 이미 일기 쓴 날짜에 있는 diary 선택
         
-    def write_diary(self, diary_content: str, mode: str): #일기 내용 기록 작성(mode='w'), 추가(mode='a')
+    def write_diary(self, diary_content: str, mode: str="w"): #일기 내용 기록 작성(mode='w'), 추가(mode='a')
         check_timestamp = datetime.now().strftime('%Y-%m-%d')
         check_fname = f'files/{check_timestamp}.txt'
         if not os.path.exists(check_fname): # 오늘 일기 아직 안썼을때
@@ -130,7 +130,13 @@ class DiaryMenu:
             choice = input(menu)
             match choice:
                 case '1':
-                    print("일기 작성")
+                    #print("일기 작성")
+                    diary_content  = input("작성할 일기 내용을 입력해 주세요: ")
+                    self.__diary_user.write_diary(diary_content)
+                    
+                    ### 일기작성후 작성된 일기 목록보여주기
+                    self.__diary_user.display_diaries(self)
+                    
                 case '2':
                     print("일기 읽기")
                 case '3':
